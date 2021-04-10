@@ -24,7 +24,9 @@ class Book(db.Model):
 
     # The genres, e.g. fiction, sci-fi, fantasy
     genres = db.relationship('Genre', secondary='book_genre', back_populates='books')
-
+    users = db.relationship(
+        "User", secondary="favorite_book", back_populates="favorite_books"
+    )
     def __str__(self):
         return f'<Book: {self.title}>'
 
